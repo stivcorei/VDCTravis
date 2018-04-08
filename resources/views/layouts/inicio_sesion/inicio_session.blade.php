@@ -14,7 +14,7 @@
     </div>
     <div class="form-group text-center">
           <!-- <button type="button" class="btn btn-primary">@lang("vista.button_enter")</button> -->
-          <a class="btn btn-info" href="datos_productor">@lang("vista.button_enter")</a>
+          <a class="btn btn-info" href="registro_datos">@lang("vista.button_enter")</a>
       </div>
 
 

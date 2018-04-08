@@ -27,6 +27,7 @@ return [
     'message_logout'       => 'Seleccione "Cerrar sesión" para finalizar su sesión actual.',
 
     'first_item_dashboard' => 'Registrar datos',
+  
     'after'                => 'El campo :attribute debe ser una fecha posterior a :date.',
     'after_or_equal'       => 'El campo :attribute debe ser una fecha posterior o igual a :date.',
     'alpha'                => 'El campo :attribute sólo puede contener letras.',
