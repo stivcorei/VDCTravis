@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" style="background-color: #e3f2fd;" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="@lang('vista.first_item_dashboard')">
-           <a class="nav-link text-dark" href="datos_productor">
+           <a class="nav-link text-dark" href="registro_datos">
              <i class="fa fa-edit"></i>
              <span class="nav-link-text">@lang("vista.first_item_dashboard")</span>
            </a>

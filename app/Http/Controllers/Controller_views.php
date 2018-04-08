@@ -11,8 +11,8 @@ class Controller_views extends Controller
       return view("ingreso");
     }
 
-    public function datos_productor()
+    public function registro_datos()
     {
-      return view("datos_productor");
+      return view("registro_datos");
     }
 }

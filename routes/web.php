@@ -21,4 +21,4 @@
 // });
 
 Route::get("/","Controller_views@ingreso");
-Route::get("/datos_productor","Controller_views@datos_productor");
+Route::get("/registro_datos","Controller_views@registro_datos");
