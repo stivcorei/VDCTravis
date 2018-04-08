@@ -1,7 +1,7 @@
 @include("layouts.head")
 
 @include("layouts.plantilla_principal1")
-@include("layouts.datos_productor.info_productor")
+@include("layouts.registro_datos.info_personas")
 @include("layouts.plantilla_principal2")
 @include("layouts.footer")
 
