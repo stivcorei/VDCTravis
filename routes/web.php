@@ -22,3 +22,5 @@
 
 Route::get("/","Controller_views@ingreso");
 Route::get("/registro_datos","Controller_views@registro_datos");
+
+Route::resource('Maquina', 'MaquinaController');

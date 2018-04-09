@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Maquina extends Model
 {
     
-    protected $fillable = [//
+    protected $fillable = ['id','nombre'];
 }
