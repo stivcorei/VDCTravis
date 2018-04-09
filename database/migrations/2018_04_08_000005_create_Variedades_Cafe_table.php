@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLineaCafeTable extends Migration
+class CreateVariedadesCafeTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Linea_Cafe';
+    public $set_schema_table = 'Variedades_Cafe';
 
     /**
      * Run the migrations.
-     * @table Linea_Cafe
+     * @table Variedades_Cafe
      *
      * @return void
      */
@@ -25,7 +25,6 @@ class CreateLineaCafeTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre', 45);
-            $table->string('descripcion')->nullable();
         });
     }
 

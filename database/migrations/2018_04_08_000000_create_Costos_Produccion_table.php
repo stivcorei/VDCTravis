@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoteSalidaTable extends Migration
+class CreateCostosProduccionTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Lote_Salida';
+    public $set_schema_table = 'Costos_Produccion';
 
     /**
      * Run the migrations.
-     * @table Lote_Salida
+     * @table Costos_Produccion
      *
      * @return void
      */
@@ -24,17 +24,8 @@ class CreateLoteSalidaTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('cantidad_kilos');
-            $table->integer('id_Lote_Entrada');
-            $table->integer('id_Linea_Cafe');
-
-            $table->index(["id_Linea_Cafe"], 'fk_Lote_Salida_Linea_Cafe1_idx');
-
-
-            $table->foreign('id_Linea_Cafe', 'fk_Lote_Salida_Linea_Cafe1_idx')
-                ->references('id')->on('Linea_Cafe')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            $table->double('valor');
+            $table->string('descripcion', 45)->nullable();
         });
     }
 

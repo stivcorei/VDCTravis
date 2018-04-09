@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoteEntradaTable extends Migration
+class CreateLotesEntradaTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Lote_Entrada';
+    public $set_schema_table = 'Lotes_Entrada';
 
     /**
      * Run the migrations.
-     * @table Lote_Entrada
+     * @table Lotes_Entrada
      *
      * @return void
      */
@@ -41,17 +41,17 @@ class CreateLoteEntradaTable extends Migration
 
 
             $table->foreign('id_Finca', 'fk_Lote_Entrada_Finca1_idx')
-                ->references('id')->on('Finca')
+                ->references('id')->on('Fincas')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('id_Perfil_Taza', 'fk_Lote_Entrada_Perfil_Taza1_idx')
-                ->references('id')->on('Perfil_Taza')
+                ->references('id')->on('Perfiles_Taza')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('id_Factor_Rendimiento', 'fk_Lote_Entrada_Factor_Rendimiento1_idx')
-                ->references('id')->on('Factor_Rendimiento')
+                ->references('id')->on('Factores_Rendimiento')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

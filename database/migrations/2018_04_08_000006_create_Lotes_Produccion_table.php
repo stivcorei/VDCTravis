@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartamentoTable extends Migration
+class CreateLotesProduccionTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Departamento';
+    public $set_schema_table = 'Lotes_Produccion';
 
     /**
      * Run the migrations.
-     * @table Departamento
+     * @table Lotes_Produccion
      *
      * @return void
      */
@@ -24,7 +24,8 @@ class CreateDepartamentoTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nombre', 45);
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
         });
     }
 

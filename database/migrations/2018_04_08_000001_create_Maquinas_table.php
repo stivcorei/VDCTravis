@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoSecadoTable extends Migration
+class CreateMaquinasTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Tipo_Secado';
+    public $set_schema_table = 'Maquinas';
 
     /**
      * Run the migrations.
-     * @table Tipo_Secado
+     * @table Maquinas
      *
      * @return void
      */
@@ -25,7 +25,6 @@ class CreateTipoSecadoTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre', 45);
-            $table->string('descripcion', 45)->nullable();
         });
     }
 

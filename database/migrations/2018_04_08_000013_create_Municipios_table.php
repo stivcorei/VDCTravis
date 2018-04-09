@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMunicipioTable extends Migration
+class CreateMunicipiosTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Municipio';
+    public $set_schema_table = 'Municipios';
 
     /**
      * Run the migrations.
-     * @table Municipio
+     * @table Municipios
      *
      * @return void
      */
@@ -31,7 +31,7 @@ class CreateMunicipioTable extends Migration
 
 
             $table->foreign('id_Departamento', 'fk_Municipio_Departamento1_idx')
-                ->references('id')->on('Departamento')
+                ->references('id')->on('Departamentos')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

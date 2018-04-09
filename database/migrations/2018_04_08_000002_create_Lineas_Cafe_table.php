@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoteProduccionTable extends Migration
+class CreateLineasCafeTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Lote_Produccion';
+    public $set_schema_table = 'Lineas_Cafe';
 
     /**
      * Run the migrations.
-     * @table Lote_Produccion
+     * @table Lineas_Cafe
      *
      * @return void
      */
@@ -24,8 +24,8 @@ class CreateLoteProduccionTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->time('hora_inicio');
-            $table->time('hora_fin');
+            $table->string('nombre', 45);
+            $table->string('descripcion')->nullable();
         });
     }
 

@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaquinaTable extends Migration
+class CreateDepartamentosTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Maquina';
+    public $set_schema_table = 'Departamentos';
 
     /**
      * Run the migrations.
-     * @table Maquina
+     * @table Departamentos
      *
      * @return void
      */

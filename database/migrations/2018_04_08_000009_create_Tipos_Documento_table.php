@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolEmpleadoTable extends Migration
+class CreateTiposDocumentoTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Rol_Empleado';
+    public $set_schema_table = 'Tipos_Documento';
 
     /**
      * Run the migrations.
-     * @table Rol_Empleado
+     * @table Tipos_Documento
      *
      * @return void
      */
@@ -24,8 +24,7 @@ class CreateRolEmpleadoTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nombre', 45);
-            $table->string('descripcion', 45)->nullable();
+            $table->string('tipo_documento', 45);
         });
     }
 

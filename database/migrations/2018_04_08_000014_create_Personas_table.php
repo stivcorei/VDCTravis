@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonaTable extends Migration
+class CreatePersonasTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Persona';
+    public $set_schema_table = 'Personas';
 
     /**
      * Run the migrations.
-     * @table Persona
+     * @table Personas
      *
      * @return void
      */
@@ -38,12 +38,12 @@ class CreatePersonaTable extends Migration
 
 
             $table->foreign('id_Rol_empleado', 'fk_Persona_Rol_empleado1_idx')
-                ->references('id')->on('Rol_Empleado')
+                ->references('id')->on('Roles_Empleado')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
             $table->foreign('id_Tipo_Documento', 'fk_Persona_Tipo_Documento1_idx')
-                ->references('id')->on('Tipo_Documento')
+                ->references('id')->on('Tipos_Documento')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });

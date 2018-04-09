@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVariedadCafeTable extends Migration
+class CreateTiemposPromedioTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Variedad_Cafe';
+    public $set_schema_table = 'Tiempos_Promedio';
 
     /**
      * Run the migrations.
-     * @table Variedad_Cafe
+     * @table Tiempos_Promedio
      *
      * @return void
      */
@@ -24,7 +24,6 @@ class CreateVariedadCafeTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('nombre', 45);
         });
     }
 

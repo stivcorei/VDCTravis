@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoUsuarioTable extends Migration
+class CreateRolesEmpleadoTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Tipo_Usuario';
+    public $set_schema_table = 'Roles_Empleado';
 
     /**
      * Run the migrations.
-     * @table Tipo_Usuario
+     * @table Roles_Empleado
      *
      * @return void
      */
@@ -25,6 +25,7 @@ class CreateTipoUsuarioTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre', 45);
+            $table->string('descripcion', 45)->nullable();
         });
     }
 

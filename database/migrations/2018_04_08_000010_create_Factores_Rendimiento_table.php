@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFactorRendimientoTable extends Migration
+class CreateFactoresRendimientoTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'Factor_Rendimiento';
+    public $set_schema_table = 'Factores_Rendimiento';
 
     /**
      * Run the migrations.
-     * @table Factor_Rendimiento
+     * @table Factores_Rendimiento
      *
      * @return void
      */
