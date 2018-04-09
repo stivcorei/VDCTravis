@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Costo_produccionController extends Controller
+class Costo_ProduccionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class Costo_produccionController extends Controller
     {
         //
 
-         $Costos_Produccion=Costo_produccion::orderBy('id','DESC')->paginate(3);
-        return view('Costo_produccion.index',compact('Costos_Produccion')); 
+         $Costos_Produccion=Costo_Produccion::orderBy('id','DESC')->paginate(3);
+        return view('Costo_Produccion.index',compact('Costos_Produccion')); 
     }
 
     /**
@@ -28,7 +28,7 @@ class Costo_produccionController extends Controller
     {
         //
 
-        return view('Costo_produccion.create');
+        return view('Costo_Produccion.create');
 
     }
 
@@ -44,8 +44,8 @@ class Costo_produccionController extends Controller
 
           //
         $this->validate($request,[ 'id'=>'required', 'valor'=>'required', 'descripcion'=>'required']);
-        Costo_produccion::create($request->all());
-        return redirect()->route('Costo_produccion.index')->with('success','Registro creado satisfactoriamente');
+        Costo_Produccion::create($request->all());
+        return redirect()->route('Costo_Produccion.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -56,8 +56,8 @@ class Costo_produccionController extends Controller
      */
     public function show($id)
     {
-        $Costos_produccion=Costo_produccion::find($id);
-        return  view('Costo_produccion.show',compact('Costos_produccion'))
+        $Costos_produccion=Costo_Produccion::find($id);
+        return  view('Costo_Produccion.show',compact('Costos_Produccion'))
     }
 
     /**
@@ -69,8 +69,8 @@ class Costo_produccionController extends Controller
     public function edit($id)
     {
         //
-          $Costos_produccion=Costo_produccion::find($id);
-        return  view('Costo_produccion.edit',compact('Costos_produccion'));
+          $Costos_produccion=Costo_Produccion::find($id);
+        return  view('Costo_Produccion.edit',compact('Costos_Produccion'));
     
     }
 
@@ -87,8 +87,8 @@ class Costo_produccionController extends Controller
 
         $this->validate($request,[ 'id'=>'required', 'valor'=>'required', 'descripcion'=>'required']);
  
-     Costo_produccion::find($id)->update($request->all());
-        return redirect()->route('Costo_produccion.index')->with('success','Registro actualizado satisfactoriamente');
+     Costo_Produccion::find($id)->update($request->all());
+        return redirect()->route('Costo_Produccion.index')->with('success','Registro actualizado satisfactoriamente');
  
     }
 
@@ -101,7 +101,7 @@ class Costo_produccionController extends Controller
     public function destroy($id)
     {
         //
-        Costo_produccion::find($id)->delete();
-        return redirect()->route('Costo_produccion.index')->with('success','Registro eliminado satisfactoriamente');
+        Costo_Produccion::find($id)->delete();
+        return redirect()->route('Costo_Produccion.index')->with('success','Registro eliminado satisfactoriamente');
     }
 }
