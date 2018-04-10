@@ -22,9 +22,8 @@
 
 Route::get("/","Controller_views@ingreso");
 Route::get("/registro_datos","Controller_views@registro_datos");
-<<<<<<< HEAD
+
 
 Route::resource('Maquina', 'MaquinaController');
-=======
+
 Route::post("/option_selected","Users_Controller@index");
->>>>>>> Se agrega vista de registro de usuarios.

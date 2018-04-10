@@ -27,7 +27,7 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom03">@lang("vista.city_estate")</label>
-      <input type="text" class="form-control" id="city-estate" name="city-estate" placeholder="" required>
+      <input type="text" class="form-control" id="identification-coffee-grower" name="identification-coffee-grower" placeholder="" required>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustomUsername">@lang("vista.vereda_estate")</label>

@@ -1,5 +1,3 @@
-  <div class="card center" id="card-register">
-  <div class="card-body">
 <form action="option_selected" method="post">
   {{ csrf_field() }}
  <div class="row">
@@ -99,8 +97,6 @@
       @endif
     @endif
   <br>
-    <button class="btn btn-primary" type="submit">Guardar</button>
+    <button class="btn btn-primary" type="submit">@lang("vista.button_save")</button>
   </form>
-</div>
-</div>
 </div>
