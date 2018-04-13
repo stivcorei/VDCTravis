@@ -1,6 +1,6 @@
 
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Page level plugin JavaScript-->
@@ -12,5 +12,6 @@
     <!-- Custom scripts for this page-->
     <script src="{{asset('js/sb-admin-datatables.min.js')}}"></script>
     <script src="{{asset('js/sb-admin-charts.min.js')}}"></script>
+    <script src="{{asset('js/function-view.js')}}"></script>
   </body>
 <html>

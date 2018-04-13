@@ -28,28 +28,16 @@
   <div class="tab-pane fade" id="manage-estate" role="tabpanel" aria-labelledby="manage-tab">
     <div class="card center" id="card-register">
      <div class="card-body">
-       <form class="form-inline" action="">
-         <div class="form-group mx-sm-1 mb-2">
-           <input type="text" class="form-control" id="" placeholder="@lang("vista.identification-coffee-grower")">
-         </div>
-        <button type="submit" class="btn btn-primary mb-2">@lang("vista.button_search")</button>
-      </form>
-      <form>
-      <p>
-    </a>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse-add-estate" aria-expanded="false" aria-controls="collapseExample">
-      @lang("vista.add_estate")
-    </button>
-  </p>
-  <div class="collapse" id="collapse-add-estate">
-       @include("manage.add_estate")
-       <br>
-         <button class="btn btn-primary" type="submit">@lang("vista.button_save")</button>
-     </form>
+      @include("manage.table_estate")
+     </div>
+   </div>
+ </div>
+  <div class="tab-pane fade" id="manage-data" role="tabpanel" aria-labelledby="manage-tab">
+    <div class="card center" id="card-register">
+     <div class="card-body">
+      @include("manage.update_person")
+     </div>
+   </div>
   </div>
-</div>
-</div>
-</div>
-  <div class="tab-pane fade" id="manage-data" role="tabpanel" aria-labelledby="manage-tab">...</div>
 </div>
 @endsection

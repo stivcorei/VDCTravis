@@ -1,3 +1,7 @@
+body
+{
+  font-size: 13px;
+}
 .card
 {
   margin-top: 80px;
@@ -20,4 +24,31 @@ a:hover
 #card-register
 {
   margin-top: auto;
+}
+
+.icon-pencil2:before {
+  content: "\271a";
+}
+
+.icon-pencil3:before {
+  content: "\1f5f4";
+}
+.icon-pencil:before
+{
+  cursor: pointer;
+  /* font-size:20px; */
+  border-radius: 5px;
+  /* background-color: rgb(170, 187, 193); */
+  content: "\1f589";
+}
+
+table{
+  font-size: 13px;
+}
+table thead{
+  text-align: center;
+}
+th,td{
+  padding: 15px;
+
 }
