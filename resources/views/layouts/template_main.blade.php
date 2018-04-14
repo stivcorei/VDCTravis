@@ -14,7 +14,14 @@
              <span class="nav-link-text">@lang("vista.first_item_dashboard")</span>
            </a>
          </li>
+         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="@lang('vista.second_item_dashboard')">
+            <a class="nav-link text-dark" href="register_lots">
+              <i class="fa fa-coffee"></i>
+              <span class="nav-link-text">@lang("vista.second_item_dashboard")</span>
+            </a>
+          </li>
       </ul>
+
       <ul class="navbar-nav sidenav-toggler bg-info text-white">
         <li class="nav-item ">
           <a class="nav-link text-center " id="sidenavToggler">

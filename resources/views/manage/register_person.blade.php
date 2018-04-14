@@ -1,4 +1,4 @@
-<form action="option_selected" method="post">
+<form action="create_data" method="post">
   {{ csrf_field() }}
  <div class="row">
     <div class="col col-lg-4">
@@ -9,38 +9,70 @@
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">@lang("vista.names")</label>
-        <input type="text" class="form-control" id="names" name="names" placeholder="" value="" required>
+        <input type="text" class="form-control" id="names" name="names" placeholder="" value="@isset($name){{$name}}@endisset" required>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom02">@lang("vista.last_name")</label>
-        <input type="text" class="form-control" id="last-name" name="last-name" placeholder="" value="" required>
+        <input type="text" class="form-control" id="last-names" name="last-names" placeholder="" value="@isset($last_name){{$last_name}}@endisset" required>
+      </div>
+      <div class="col-md-1 mb-3">
+      <label>@lang("vista.type_identicication")</label>
+        <div class="input-group">
+          <select  name="type-identification">
+            @if(isset($type_identification))
+              @if($type_identification == 1)
+              <option value="1" selected>
+                Cédula
+              </option>
+              <option value="2">
+                NIT
+              </option>
+              @endif
+              @if($type_identification == 2)
+              <option value="1">
+                Cédula
+              </option>
+              <option value="2" selected>
+                NIT
+              </option>
+              @endif
+              @else
+              <option value="1">
+                Cédula
+              </option>
+              <option value="2">
+                NIT
+              </option>
+            @endif
+          </select>
+        </div>
       </div>
       <div class="col-md-2 mb-2">
         <label for="validationCustomUsername">@lang("vista.identification_card")</label>
         <div class="input-group">
-        <input type="text" class="form-control" name="identification_card" value="@isset($identification){{$identification}}@endisset" id="identification_card" required>
+        <input type="text" class="form-control" name="identification-card" value="@isset($identification){{$identification}}@endisset" id="identification_card" required>
         </div>
       </div>
       <div class="col-md-2 mb-3">
         <label for="validationCustomUsername">@lang("vista.telephone")</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="telephone" name="telephone" placeholder="" aria-describedby="inputGroupPrepend" required>
+          <input type="text" class="form-control" id="telephone" name="telephone" placeholder="" value="@isset($telephone){{$telephone}}@endisset" aria-describedby="inputGroupPrepend" required>
         </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustom03">@lang("vista.address")</label>
-        <input type="text" class="form-control" id="address" name="address" placeholder="" required>
+        <input type="text" class="form-control" id="address" name="address" value="@isset($address){{$address}}@endisset" placeholder="" required>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationCustom04">@lang("vista.email")</label>
-        <input type="text" class="form-control" id="email" name="address" placeholder="" required>
+        <input type="text" class="form-control" id="email" name="email" value="@isset($email){{$email}}@endisset" placeholder="" required>
       </div>
       <div class="col-md-4 mb-3">
       <label>@lang("vista.type_user")</label>
       <div class="input-group">
-  <select onchange="this.form.submit()" name="type-user">
+  <select onchange="this.form.submit('hollll')" name="type-user">
       @if(isset($user))
         @if($user == 1)
         <option value="1" selected>
@@ -97,6 +129,6 @@
       @endif
     @endif
   <br>
-    <button class="btn btn-primary" type="submit">@lang("vista.button_save")</button>
+    <button class="btn btn-primary" name="save" value="save" type="submit">@lang("vista.button_save")</button>
   </form>
 </div>

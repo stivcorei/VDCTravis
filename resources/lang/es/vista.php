@@ -26,10 +26,15 @@ return [
     'title_logout'         => '¿Desea cerrar sesión?',
     'message_logout'       => 'Seleccione "Cerrar sesión" para finalizar su sesión actual.',
     'first_item_dashboard' => 'Registrar datos',
+    'second_item_dashboard'=> 'Ingresar lote',
+
     'name_tab_register'    => 'Registro de usuario',
     'name_tab_add_estate'  => 'Gestionar finca',
     'name_tab_update_data' => 'Actualizar datos',
+
+    'name_tab_register_lots'=> 'Registrar lote',
     'type_user'            => 'Tipo de usuario',
+    'type_identicication'  => 'Documento',
     'identification_card'  => 'Cédula o NIT',
     'names'                => 'Nombres',
     'last_name'            => 'Apellidos',
@@ -47,6 +52,7 @@ return [
     'button_save'          => 'Guardar',
     'button_search'        => 'Buscar',
     'add_estate'           => 'Agregar finca',
+
 
     'after'                => 'El campo :attribute debe ser una fecha posterior a :date.',
     'after_or_equal'       => 'El campo :attribute debe ser una fecha posterior o igual a :date.',

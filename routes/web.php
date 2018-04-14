@@ -22,8 +22,9 @@
 
 Route::get("/","Controller_views@ingreso");
 Route::get("/registro_datos","Controller_views@registro_datos");
+Route::get("/register_lots","Controller_views@register_lots");
 
 
 Route::resource('Maquina', 'MaquinaController');
 
-Route::post("/option_selected","Users_Controller@index");
+Route::post("/create_data","Controller_Data@store");
