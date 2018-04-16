@@ -11,7 +11,7 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">@lang("vista.names_estate")</label>
-      <input type="text" class="form-control" id="names-estate" name="names-estate" placeholder="" value="" required>
+      <input type="text" onkeypress="return onlyLetters(event)"  class="form-control" id="names-estate" name="names-estate" placeholder="" value="" required>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom02">@lang("vista.address_estate")</label>
@@ -27,7 +27,7 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom03">@lang("vista.city_estate")</label>
-      <input type="text" class="form-control" id="identification-coffee-grower" name="identification-coffee-grower" placeholder="" required>
+      <input type="text" class="form-control" id="city-estate" name="city-estate" placeholder="" required>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustomUsername">@lang("vista.vereda_estate")</label>

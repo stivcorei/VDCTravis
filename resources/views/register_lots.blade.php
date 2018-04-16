@@ -21,7 +21,7 @@
   <div class="tab-pane fade show active" id="register-lots" role="tabpanel" aria-labelledby="register-tab">
     <div class="card center" id="card-register">
     <div class="card-body">
-      @include("manage.add_lots")
+      @include("manage.table_lots")
     </div>
   </div>
   </div>

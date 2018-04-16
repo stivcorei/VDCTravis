@@ -14,7 +14,6 @@
                   <td>{{$coffeeGrower->names." ".$coffeeGrower->surnames}}</td>
                   <td>{{$coffeeGrower->id}}</td>
                   <td>
-                      <button class="btn btn-primary" id="{{$coffeeGrower->id}}" onclick="addEstate(this.id)" data-toggle="tooltip" title="@lang("vista.add_estate")"><i class="fa fa-home"></i></i></button>
                       <table class="table table-bordered">
                       <thead>
                         <tr>
@@ -23,8 +22,8 @@
                           <th>Altitud</th>
                           <th>Ciudad</th>
                           <th>Vereda</th>
-                          <th>Editar</th>
-                          <th>Eliminar</th>
+                          <th>Agregar lote</th>
+                          <th>Ver lotes</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -37,8 +36,8 @@
                           <td id="municipalities_id{{$estate2->id_estates}}">{{$estate2->municipalities_id}}</td>
                           <td id="vereda{{$estate2->id_estates}}">{{$estate2->vereda}}</td>
                           <label for="id" id="identification{{$estate2->id_estates}}">{{$coffeeGrower->id}}</label>
-                          <td><button id="{{$estate2->id_estates}}" class="btn btn-primary" onclick="editEstate(this.id)"><i class="fa fa-edit"></i></button></td>
-                          <td><button id="{{$estate2->id_estates}}" class="btn btn-danger" onclick="removeEstate(this.id)"><i class="fa fa-trash"></i></button></td>
+                          <td><button id="{{$estate2->id_estates}}" class="btn btn-primary" onclick="addLots(this.id)"><i class="fa fa-edit"></i></button></td>
+                          <td><button id="{{$estate2->id_estates}}" class="btn btn-info" onclick="removeLots(this.id)"><i class="fa fa-eye"></i></button></td>
                         </tr>
                           @endif
                         @endforeach
@@ -50,33 +49,8 @@
               </tbody>
             </table>
           </div>
-          <!-- Modal actualizar fincas -->
-          <div class="modal fade bd-example-modal-lg" id="modal-edit-estate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><B>Actualizar finca</B></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-              <form action="update_estate" method="post">
-                  {{ csrf_field() }}
-              <input type="text" for="id-estate" name="id-estate" value="" id="id-estate">
-                @include("manage.add_estate")
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <<button class="btn btn-primary" name="btn-manage" value="save" type="submit">@lang("vista.button_save")</button>
-              </form>
-            </div>
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <!-- Modal eliminar fincas -->
+        <!-- Modal eliminar lotes -->
         <div class="modal fade" id="modal-remove-estate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -90,9 +64,9 @@
               <form action="create_estate" method="post">
                   {{ csrf_field() }}
                   <div class="form-group row">
-               <h6>¿Esta seguro de eliminar la finca seleccionada?</h6>
+               <label for="example-text-input" class="col-3 col-form-label">Id:</label>
                <div class="col-2">
-                <input class="form-control" type="text" for="id-estate-remove" name="id-estate-remove" value="" id="id-estate-remove" readonly="true">
+                <input class="form-control" type="text" name="id-estate-remove" value="" id="id-estate-remove" readonly="true">
                </div>
                </div>
                <div class="modal-footer">
@@ -106,29 +80,52 @@
         </div>
         </div>
 
-        <!-- Modal agregar fincas -->
-        <div class="modal fade bd-example-modal-lg" id="modal-add-estate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal agregar lotes -->
+        <div class="modal fade bd-example-modal-lg" id="modal-add-lots" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><B>Agregar finca</B></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-            <form action="add_estate" method="post">
+            <form action="create_lots" method="post">
                 {{ csrf_field() }}
-             <label>@lang("vista.identification_card")</label>
-            <input type="text" for="identification-add-estate" name="identification-add-estate" value="" id="identification-add-estate">
-              @include("manage.add_estate")
+             <label></label>
+            <input type="text" for="id-estate" name="id-estate" value="" id="id-estate">
+              @include("manage.add_lots")
+              @include("manage.add_factor")
+              @include("manage.cup_profiles")
+
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <<button class="btn btn-primary" name="btn-manage" value="add" type="submit">@lang("vista.button_save")</button>
+            <button class="btn btn-primary" name="btn-manage" value="add" type="submit">@lang("vista.button_save")</button>
             </form>
           </div>
           </div>
         </div>
         </div>
       </div>
+
+<!-- Modal ver lotes -->
+      <div class="modal fade bd-example-modal-lg" id="modal-add-lots" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
