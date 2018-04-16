@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Person;
+use App\UserType;
+use App\IdentificationType;
+use App\EmployeeRole;
+use App\Estate;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class Controller_Data extends Controller
 {
@@ -29,19 +36,56 @@ class Controller_Data extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($user,$type_identification,$identification,$name,$last_name,$telephone,$address,$email)
+    public function create($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
+                           $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate)
     {
         $person = new Person;
+        $userType = new UserType;
+
         $person->id = $identification;
         $person->names = $name;
         $person->surnames = $last_name;
         $person->phone = $telephone;
         $person->address = $address;
         $person->email = $email;
-        $person->employee_roles_id = $user;
+        $person->employee_roles_id = $employeeRole2;
         $person->identification_types_id = $type_identification;
 
-        $person->save();
+        if($person->save()==1)
+        {
+          $person->user_types()->attach($typeUser);
+          if($typeUser == 2)
+          {
+            $estate = new Estate;
+            $estate->people_id = $identification;
+            $estate->name = $nameEstate;
+            $estate->address = $addressEstate;
+            $estate->altitude = $altitudeEstate;
+            $estate->municipalities_id = $cityEstate;
+            $estate->vereda = $veredaEstate;
+            $estate->save();
+
+          }
+          echo "<script type=\"text/javascript\">
+  								alert('Se ha guardado la información correctamente');
+  								location.href = 'registro_datos';
+  						   </script>";
+
+        }
+        else
+        {
+          echo "<script type=\"text/javascript\">
+ 							   alert('Ha ocurido un error al actualizar la información');
+ 							   history.go(-1);
+ 						    </script>";
+ 				 exit;
+
+        }
+
+
+
+
+
 
     }
 
@@ -53,9 +97,30 @@ class Controller_Data extends Controller
      */
     public function store(Request $request)
     {
+      $identificationType = new IdentificationType;
+      $employeeRole= new EmployeeRole;
+
+      $identificationType = $identificationType->get();
+      $employeeRole= $employeeRole->get();
+
+      $estate= DB::table('people')
+                  ->select('estates.id as id_estates','*')
+                  ->join('estates', 'people.id', '=', 'estates.people_id')
+                  ->orderBy('people.id')
+                  ->get();
+
+      $coffeeGrower= DB::table('person_user_type')
+                          ->join('people', 'person_user_type.person_id', '=', 'people.id')
+                          ->where('person_user_type.user_type_id',2)
+                          ->select('*')
+                          ->get();
+
+
+
       if($request->isMethod("post"))
       {
-        $user = $request->input('type-user');
+        $typeUser= $request->input('type-user');
+        $employeeRole2= $request->input('employee-role');
         $type_identification = $request->input('type-identification');
         $identification = $request->input('identification-card');
         $name = $request->input('names');
@@ -63,23 +128,38 @@ class Controller_Data extends Controller
         $telephone = $request->input('telephone');
         $address = $request->input('address');
         $email = $request->input('email');
+        $nameEstate = $request->input('names-estate');
+        $addressEstate = $request->input('address-estate');
+        $altitudeEstate = $request->input('altitude-estate');
+        $cityEstate = $request->input('city-estate');
+        $veredaEstate = $request->input('vereda-estate');
 
-        if($request->input('type-user') == 1 && $request->input('save') != "save")
+        if($typeUser == 1 && $request->input('save') != "save")
         {
-          return view("registro_datos",compact('user','type_identification','identification','name','last_name','telephone','address','email'));
+          return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
+                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower'));
         }
-        else if($request->input('type-user') == 2 && $request->input('save') != "save")
+        else if($typeUser == 2 && $request->input('save') != "save")
         {
-          return view("registro_datos",compact('user','type_identification','identification','name','last_name','telephone','address','email'));
+          return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
+                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower'));
         }
-        else if($request->input('type-user') == 3 && $request->input('save') != "save")
+        else if($typeUser== 3 && $request->input('save') != "save")
         {
-          return view("registro_datos",compact('user','type_identification','identification','name','last_name','telephone','address','email'));
+          return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
+                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower'));
         }
-        else if($request->input('save') == "save")
+        else if($request->input('save') == "save" && $typeUser != 2)
         {
-          $this->create($user,$type_identification,$identification,$name,$last_name,$telephone,$address,$email);
+          $this->create($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
+                        $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate);
         }
+        else if($request->input('save') == "save" && $typeUser == 2)
+        {
+          $this->create($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
+                          $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate);
+        }
+
       }
     }
 
