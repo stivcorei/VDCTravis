@@ -6,6 +6,7 @@ $(document).ready(function() {
     $('input[for="id-estate-remove"]').hide();
     $('input[for="id-estate"]').hide();
     $('input[for="identification-add-estate"]').hide();
+    date();
 } );
 
 function editEstate(id)
@@ -14,7 +15,7 @@ function editEstate(id)
      var name = document.getElementById('name'+id).innerHTML;
      var address = document.getElementById('address'+id).innerHTML;
      var altitude = document.getElementById('altitude'+id).innerHTML;
-     var municipalities_id = document.getElementById('municipalities_id'+id).innerHTML;
+     //var municipalities_id = document.getElementById('municipalities_id'+id).innerHTML;
      var vereda = document.getElementById('vereda'+id).innerHTML;
      var identification = document.getElementById('identification'+id).innerHTML;
      // var codigo_region = document.getElementById('codigo_region'+id).innerHTML;
@@ -24,7 +25,7 @@ function editEstate(id)
      document.getElementById('names-estate').value=name;
      document.getElementById('address-estate').value=address;
      document.getElementById('altitude-estate').value=altitude;
-     document.getElementById('city-estate').value=municipalities_id;
+     //document.getElementById('city-estate').value=municipalities_id;
      document.getElementById('vereda-estate').value=vereda;
      document.getElementById('id-estate').value=id;
 
@@ -106,6 +107,20 @@ function onlyLetters(e){
      }
      else{
        return false;
+     }
+
+     function date() {
+       var date_input = $('input[name="input-date"]'); //our date input has the name "date"
+       var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+       date_input.datepicker({
+         format: 'mm/dd/yyyy',
+         container: container,
+         todayHighlight: true,
+         disableTouchKeyboard: true,
+         autoclose: true,
+         language: 'es',
+
+       })
      }
 
    }

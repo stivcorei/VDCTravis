@@ -27,7 +27,15 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom03">@lang("vista.city_estate")</label>
-      <input type="text" class="form-control" id="city-estate" name="city-estate" placeholder="" required>
+        <div class="input-group">
+      <select  id="city-estate" name="city-estate" required>
+        @if(isset($municipalities))
+        @foreach($municipalities as $municipalities)
+         <option value="{{$municipalities->id}}">{{$municipalities->name}}</option>
+        @endforeach
+         @endif
+      </select>
+    </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustomUsername">@lang("vista.vereda_estate")</label>

@@ -5,7 +5,7 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Fecha ingreso</label>
-                <input type="text" class="form-control" id="input-date" name="input-date" placeholder="" value="" required>
+                <input type="text" class="form-control" id="input-date" name="input-date" placeholder="MM/DD/YYYY" value="" required>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="validationCustom02">Número de kilos</label>

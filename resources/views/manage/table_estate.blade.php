@@ -15,7 +15,7 @@
                   <td>{{$coffeeGrower->id}}</td>
                   <td>
                       <button class="btn btn-primary" id="{{$coffeeGrower->id}}" onclick="addEstate(this.id)" data-toggle="tooltip" title="@lang("vista.add_estate")"><i class="fa fa-home"></i></i></button>
-                      <table class="table table-bordered">
+                      <table class="table table-bordered text-center">
                       <thead>
                         <tr>
                           <th >Nombre finca</th>
@@ -68,7 +68,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <<button class="btn btn-primary" name="btn-manage" value="save" type="submit">@lang("vista.button_save")</button>
+              <button class="btn btn-primary" name="btn-manage" value="save" type="submit">@lang("vista.button_save")</button>
               </form>
             </div>
             </div>
@@ -119,13 +119,13 @@
             <div class="modal-body">
             <form action="add_estate" method="post">
                 {{ csrf_field() }}
-             <label>@lang("vista.identification_card")</label>
+
             <input type="text" for="identification-add-estate" name="identification-add-estate" value="" id="identification-add-estate">
               @include("manage.add_estate")
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <<button class="btn btn-primary" name="btn-manage" value="add" type="submit">@lang("vista.button_save")</button>
+            <button class="btn btn-primary" name="btn-manage" value="add" type="submit">@lang("vista.button_save")</button>
             </form>
           </div>
           </div>

@@ -13,5 +13,8 @@
     <script src="{{asset('js/sb-admin-datatables.min.js')}}"></script>
     <script src="{{asset('js/sb-admin-charts.min.js')}}"></script>
     <script src="{{asset('js/function-view.js')}}"></script>
+
+    <script src="{{asset('vendor/bootstrap/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/locales/bootstrap-datepicker.es.js')}}"></script>
   </body>
 <html>

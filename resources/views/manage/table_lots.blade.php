@@ -14,7 +14,7 @@
                   <td>{{$coffeeGrower->names." ".$coffeeGrower->surnames}}</td>
                   <td>{{$coffeeGrower->id}}</td>
                   <td>
-                      <table class="table table-bordered">
+                      <table class="table table-bordered text-center">
                       <thead>
                         <tr>
                           <th >Nombre finca</th>
@@ -37,7 +37,7 @@
                           <td id="vereda{{$estate2->id_estates}}">{{$estate2->vereda}}</td>
                           <label for="id" id="identification{{$estate2->id_estates}}">{{$coffeeGrower->id}}</label>
                           <td><button id="{{$estate2->id_estates}}" class="btn btn-primary" onclick="addLots(this.id)"><i class="fa fa-edit"></i></button></td>
-                          <td><button id="{{$estate2->id_estates}}" class="btn btn-info" onclick="removeLots(this.id)"><i class="fa fa-eye"></i></button></td>
+                          <td><button id="{{$estate2->id_estates}}" class="btn btn-info" onclick="viewLots(this.id)"><i class="fa fa-eye"></i></button></td>
                         </tr>
                           @endif
                         @endforeach

@@ -115,6 +115,9 @@ class Controller_Data extends Controller
                           ->select('*')
                           ->get();
 
+      //$departaments = DB::table('departments')->get();
+      $municipalities = DB::table('municipalities')->get();
+
 
 
       if($request->isMethod("post"))
@@ -137,17 +140,17 @@ class Controller_Data extends Controller
         if($typeUser == 1 && $request->input('save') != "save")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower'));
+                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower','municipalities'));
         }
         else if($typeUser == 2 && $request->input('save') != "save")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower'));
+                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower','municipalities'));
         }
         else if($typeUser== 3 && $request->input('save') != "save")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower'));
+                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower','municipalities'));
         }
         else if($request->input('save') == "save" && $typeUser != 2)
         {
