@@ -98,7 +98,6 @@
               @include("manage.add_factor")
               @include("manage.cup_profiles")
 
-
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button class="btn btn-primary" name="btn-manage" value="add" type="submit">@lang("vista.button_save")</button>
