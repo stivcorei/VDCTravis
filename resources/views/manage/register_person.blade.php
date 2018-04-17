@@ -42,7 +42,7 @@
       <div class="col-md-2 mb-2">
         <label for="validationCustomUsername">@lang("vista.identification_card")</label>
         <div class="input-group">
-        <input type="text" onkeypress="return onlyNumberId(event)" class="form-control" name="identification-card" value="@isset($identification){{$identification}}@endisset" id="identification_card" required>
+        <input type="text" onkeypress="return onlyNumber(event)" class="form-control" name="identification-card" value="@isset($identification){{$identification}}@endisset" id="identification_card" required>
         </div>
       </div>
     </div>
