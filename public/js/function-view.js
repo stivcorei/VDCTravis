@@ -85,27 +85,9 @@ $(function(){
     });
 });
 
-   function onlyNumberIdFactor(evt)
+   function onlyNumberId(evt)
    {
-     pasilla_percentage = 0;
-     white_percentage = 0;
-     fermented_percentage
-     pasilla_percentage = 0;
-     white_percentage = 0;
-     fermented_percentage = 0;
-
-     var pasilla_percentage = $('input:text[name=pasilla-percentage]').val();
-     var white_percentage = $('input:text[name=white-percentage]').val();
-     var fermented_percentage = $('input:text[name=fermented-percentage]').val();
-    //var municipalities_id = document.getElementById('municipalities_id'+id).innerHTML;
-     var borer= $('input:text[name=borer]').val();
-
-     alert(pasilla_percentage);
-     var formula = 0;
-
-     var formula = (pasilla_percentage+white_percentage+fermented_percentage+borer);
-
-     document.getElementById('yield-factor').value=pasilla_percentage;
+     
 
      if(window.event){//asignamos el valor de la tecla a keynum
        keynum = evt.keyCode; //IE

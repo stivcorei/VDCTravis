@@ -39,8 +39,21 @@ class Controller_Data extends Controller
     public function create($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
                            $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate)
     {
+
+
         $person = new Person;
         $userType = new UserType;
+
+        $validation = $person->find($identification);
+
+        if(count($validation) == 1)
+        {
+          echo "<script type=\"text/javascript\">
+                 alert('El usuario con número de identificación $identification ya esta registrado');
+                 history.go(-1);
+                </script>";
+              exit;
+        }
 
         $person->id = $identification;
         $person->names = $name;
@@ -81,11 +94,6 @@ class Controller_Data extends Controller
  				 exit;
 
         }
-
-
-
-
-
 
     }
 
