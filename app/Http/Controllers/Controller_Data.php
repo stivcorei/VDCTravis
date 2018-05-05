@@ -126,6 +126,10 @@ class Controller_Data extends Controller
       //$departaments = DB::table('departments')->get();
       $municipalities = DB::table('municipalities')->get();
 
+      $userType = DB::table('user_types')->get();
+
+
+
 
 
       if($request->isMethod("post"))
@@ -148,17 +152,17 @@ class Controller_Data extends Controller
         if($typeUser == 1 && $request->input('save') != "save")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower','municipalities'));
+                                                  'address','email','identificationType','employeeRole','userType','estate','coffeeGrower','municipalities'));
         }
         else if($typeUser == 2 && $request->input('save') != "save")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower','municipalities'));
+                                                  'address','email','identificationType','employeeRole','userType','estate','coffeeGrower','municipalities'));
         }
         else if($typeUser== 3 && $request->input('save') != "save")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','estate','coffeeGrower','municipalities'));
+                                                  'address','email','identificationType','employeeRole','userType','estate','coffeeGrower','municipalities'));
         }
         else if($request->input('save') == "save" && $typeUser != 2)
         {
@@ -193,7 +197,7 @@ class Controller_Data extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -205,7 +209,7 @@ class Controller_Data extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

@@ -35,10 +35,15 @@ class Controller_views extends Controller
                           ->where('person_user_type.user_type_id',2)
                           ->select('*')
                           ->get();
+
       $municipalities = DB::table('municipalities')->get();
 
+      $dataPeople = DB::table('people')->get();
 
-      return view("registro_datos",compact('identificationType','employeeRole','estate','coffeeGrower','municipalities'));
+      $userType = DB::table('user_types')->get();
+
+
+      return view("registro_datos",compact('identificationType','employeeRole','userType','dataPeople','estate','coffeeGrower','municipalities'));
     }
 
     public function register_lots()

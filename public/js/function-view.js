@@ -6,7 +6,25 @@ $(document).ready(function() {
     $('input[for="id-estate-remove"]').hide();
     $('input[for="id-estate"]').hide();
     $('input[for="identification-add-estate"]').hide();
-    //date();
+    date();
+
+    $('#create-lots').validate({ // initialize the plugin
+
+      lang: 'en',
+        rules: {
+            "input-date": {
+                required: true,
+
+            },
+            "kilos-number": {
+                required: true,
+                minlength: 5
+            },
+            "avaible-kilos":{
+               required: true
+            }
+        }
+    });
 } );
 
 function editEstate(id)
@@ -29,6 +47,37 @@ function editEstate(id)
      document.getElementById('vereda-estate').value=vereda;
      document.getElementById('id-estate').value=id;
 
+
+}
+
+function editPeople(id)
+{
+     var id = document.getElementById('id'+id).innerHTML;
+     var names = document.getElementById('names'+id).innerHTML;
+     var surnames = document.getElementById('surnames'+id).innerHTML;
+     var phone = document.getElementById('phone'+id).innerHTML;
+     //var municipalities_id = document.getElementById('municipalities_id'+id).innerHTML;
+     var address = document.getElementById('address'+id).innerHTML;
+     var email = document.getElementById('email'+id).innerHTML;
+     // // var codigo_region = document.getElementById('codigo_region'+id).innerHTML;
+
+     $("#modal-edit-people").modal();
+
+     document.getElementById('identification-card').value=id;
+     document.getElementById('names').value=names;
+     document.getElementById('last-names').value=surnames;
+     document.getElementById('telephone').value=phone;
+     document.getElementById('address').value=address;
+     document.getElementById('email').value=email;
+
+
+}
+
+function removePeople(id)
+{
+
+  $("#modal-remove-people").modal();
+  document.getElementById('id-estate-remove').value=id;
 
 }
 
@@ -87,7 +136,7 @@ $(function(){
 
    function onlyNumberId(evt)
    {
-     
+
 
      if(window.event){//asignamos el valor de la tecla a keynum
        keynum = evt.keyCode; //IE
@@ -115,7 +164,7 @@ $(function(){
        keynum = evt.which; //FF
      }
      //comprobamos si se encuentra en el rango numérico y que teclas no recibirá.
-     if((keynum > 44 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6 ){
+     if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6 ){
        return true;
      }
      else{
@@ -134,7 +183,7 @@ $(function(){
        autoclose: true,
        language: 'es',
 
-     })
+     });
    }
 
    function factorRendimiento()

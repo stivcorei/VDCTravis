@@ -50,8 +50,41 @@ return [
     'coffee-grower'        => 'Caficultor',
     'information_estate'   => 'Información de finca',
     'button_save'          => 'Guardar',
+    'button_close'         => 'Cerrar',
+    'button_delete'        => 'Eliminar',
     'button_search'        => 'Buscar',
     'add_estate'           => 'Agregar finca',
+    'edit'                 => 'Editar',
+    'remove'               => 'Eliminar',
+    'title_remove_estate'  => 'Eliminar finca',
+    'confirmation_delete'  => '¿Esta seguro de eliminar la finca seleccionada?',
+    'title_factor_calculate'=> 'Factor de rendimiento en base a 250gr',
+    'grain_pasilla'        => 'Grano pasilla %',
+    'grain_white'          => 'Grano blanco %',
+    'grain_fermented'       => 'Grano fermentado %',
+    'broca'                => 'Broca %',
+    'factor_in_kilos'      => 'Factor de rendimiento en kilos',
+    'title_data_lots'      => 'Datos de lote',
+
+    'label_date_input'     => 'Fecha de ingreso',
+    'label_number_kilos'   => 'Número de kilos',
+    'label_kilos_avaible'  => 'Kilos disponibles',
+
+    'title_cup_profile'    => 'Perfiles de taza',
+    'label_cup_points'     => 'Puntos de taza',
+    'label_aroma'          => 'Armona',
+    'label_flavor'         => 'Sabor',
+    'label_acidity'        => 'Acidéz',
+    'label_body'           => 'cuerpo',
+    'label_sweetness'      => 'Dulzura',
+    'label_value_balance'  => 'Valor de equilibrio',
+    'label_balance_decription' => 'Descripción de equilibrio',
+    'label_add_lot'        => 'Agregar lote',
+    'label_view_lot'       => 'Ver lotes',
+
+
+
+
 
 
     'after'                => 'El campo :attribute debe ser una fecha posterior a :date.',

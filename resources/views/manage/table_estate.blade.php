@@ -18,13 +18,13 @@
                       <table class="table table-bordered text-center">
                       <thead>
                         <tr>
-                          <th >Nombre finca</th>
-                          <th>Dirección</th>
-                          <th>Altitud</th>
-                          <th>Ciudad</th>
-                          <th>Vereda</th>
-                          <th>Editar</th>
-                          <th>Eliminar</th>
+                          <th>Nombre finca</th>
+                          <th>@lang("vista.address")</th>
+                          <th>@lang("vista.altitude_estate")</th>
+                          <th>@lang("vista.city_estate")</th>
+                          <th>@lang("vista.vereda_estate")</th>
+                          <th>@lang("vista.edit")</th>
+                          <th>@lang("vista.remove")</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -65,9 +65,8 @@
                   {{ csrf_field() }}
               <input type="text" for="id-estate" name="id-estate" value="" id="id-estate">
                 @include("manage.add_estate")
-
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang("vista.button_close")</button>
               <button class="btn btn-primary" name="btn-manage" value="save" type="submit">@lang("vista.button_save")</button>
               </form>
             </div>
@@ -81,7 +80,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><B>Eliminar finca</B></h5>
+              <h5 class="modal-title" id="exampleModalLabel"><B>@lang("vista.title_remove_estate")</B></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -90,14 +89,14 @@
               <form action="create_estate" method="post">
                   {{ csrf_field() }}
                   <div class="form-group row">
-               <h6>¿Esta seguro de eliminar la finca seleccionada?</h6>
+               <h6>@lang("vista.confirmation_delete")</h6>
                <div class="col-2">
                 <input class="form-control" type="text" for="id-estate-remove" name="id-estate-remove" value="" id="id-estate-remove" readonly="true">
                </div>
                </div>
                <div class="modal-footer">
-                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                 <button class="btn btn-primary" name="btn-manage" value="delete" type="submit">Eliminar</button>
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang("vista.button_close")</button>
+                 <button class="btn btn-primary" name="btn-manage" value="delete" type="submit">@lang("vista.button_delete")</button>
                </div>
           </form>
 
@@ -111,7 +110,7 @@
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><B>Agregar finca</B></h5>
+              <h5 class="modal-title" id="exampleModalLabel"><B>@lang("vista.add_estate")</B></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -124,7 +123,7 @@
               @include("manage.add_estate")
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang("vista.button_close")</button>
             <button class="btn btn-primary" name="btn-manage" value="add" type="submit">@lang("vista.button_save")</button>
             </form>
           </div>

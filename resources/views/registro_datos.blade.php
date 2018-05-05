@@ -13,7 +13,10 @@
   <li class="nav-item">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#manage-estate" role="tab" aria-controls="profile" aria-selected="false">@lang("vista.name_tab_add_estate")</a>
   </li>
-  
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#manage-data" role="tab" aria-controls="profile" aria-selected="false">@lang("vista.name_tab_update_data")</a>
+  </li>
+
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="register-data" role="tabpanel" aria-labelledby="register-tab">

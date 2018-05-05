@@ -17,13 +17,13 @@
                       <table class="table table-bordered text-center">
                       <thead>
                         <tr>
-                          <th >Nombre finca</th>
-                          <th>Dirección</th>
-                          <th>Altitud</th>
-                          <th>Ciudad</th>
-                          <th>Vereda</th>
-                          <th>Agregar lote</th>
-                          <th>Ver lotes</th>
+                          <th >@lang("vista.names_estate")</th>
+                          <th>@lang("vista.address")</th>
+                          <th>@lang("vista.altitude_estate")</th>
+                          <th>@lang("vista.city_estate")</th>
+                          <th>@lang("vista.vereda")</th>
+                          <th>@lang("vista.label_add_lot")</th>
+                          <th>@lang("vista.label_view_lot")</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -90,7 +90,7 @@
               </button>
             </div>
             <div class="modal-body">
-            <form action="create_lots" method="post">
+            <form action="create_lots" method="post" id="create-lots">
                 {{ csrf_field() }}
              <label></label>
             <input type="text" for="id-estate" name="id-estate" value="" id="id-estate">

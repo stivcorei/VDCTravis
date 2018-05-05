@@ -42,7 +42,7 @@
       <div class="col-md-2 mb-2">
         <label for="validationCustomUsername">@lang("vista.identification_card")</label>
         <div class="input-group">
-        <input type="text" onkeypress="return onlyNumber(event)" class="form-control" name="identification-card" value="@isset($identification){{$identification}}@endisset" id="identification_card" required>
+        <input type="text" onkeypress="return onlyNumber(event)" class="form-control" name="identification-card" value="@isset($identification){{$identification}}@endisset" id="identification-card" required>
         </div>
       </div>
     </div>
@@ -64,51 +64,41 @@
       <div class="col-md-3 mb-3">
       <label>@lang("vista.type_user")</label>
       <div class="input-group">
-  <select onchange="this.form.submit('hollll')" name="type-user">
+  <select onchange="this.form.submit('')" name="type-user">
       @if(isset($typeUser))
         @if($typeUser == 1)
-        <option value="1" selected>
-          Empleado
-        </option>
-        <option value="2">
-          Caficultor
-        </option>
-        <option  value="3">
-          Cliente
-        </option>
+          @foreach($userType as $userType )
+            @if($typeUser == $userType->id)
+              <option value="{{$userType->id}}" selected>{{$userType->name}}</option>
+            @else
+              <option value="{{$userType->id}}">{{$userType->name}}</option>
+            @endif
+          @endforeach
         @endif
+
         @if($typeUser == 2)
-        <option value="1">
-          Empleado
-        </option>
-        <option value="2" selected>
-          Caficultor
-        </option>
-        <option  value="3">
-          Cliente
-        </option>
+          @foreach($userType as $userType )
+            @if($typeUser == $userType->id)
+              <option value="{{$userType->id}}" selected>{{$userType->name}}</option>
+            @else
+              <option value="{{$userType->id}}">{{$userType->name}}</option>
+            @endif
+          @endforeach
         @endif
+
         @if($typeUser == 3)
-        <option value="1">
-          Empleado
-        </option>
-        <option value="2">
-          Caficultor
-        </option>
-        <option  value="3" selected>
-          Cliente
-        </option>
+          @foreach($userType as $userType )
+            @if($typeUser == $userType->id)
+              <option value="{{$userType->id}}" selected>{{$userType->name}}</option>
+            @else
+              <option value="{{$userType->id}}">{{$userType->name}}</option>
+            @endif
+          @endforeach
         @endif
       @else
-      <option value="1">
-        Empleado
-      </option>
-      <option value="2">
-        Caficultor
-      </option>
-      <option  value="3">
-        Cliente
-      </option>
+        @foreach($userType as $userType )
+          <option value="{{$userType->id}}">{{$userType->name}}</option>
+        @endforeach
       @endif
       </select>
     </div>
@@ -120,7 +110,7 @@
             <div class="input-group">
               <select  name="employee-role">
                 @foreach($employeeRole as $employeeRole )
-                <option value="{{$employeeRole->id}}">{{$employeeRole->name}}</option>
+                  <option value="{{$employeeRole->id}}">{{$employeeRole->name}}</option>
                 @endforeach
               </select>
             </div>

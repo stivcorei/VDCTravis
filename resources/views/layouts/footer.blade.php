@@ -16,5 +16,8 @@
 
     <script src="{{asset('vendor/bootstrap/js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/locales/bootstrap-datepicker.es.js')}}"></script>
+    <script src="{{asset('vendor/jquery-validate/localization/messages_es.min.js')}}"></script>
+    <script src="{{asset('vendor/jquery-validate/jquery.validate.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   </body>
 <html>
