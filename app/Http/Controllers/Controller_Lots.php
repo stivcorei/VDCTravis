@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\YieldFactor;
 use App\CupProfile;
 use App\InputLot;
+use App\ProductionLot;
+use Illuminate\Support\Facades\DB;
 
 class Controller_Lots extends Controller
 {
@@ -32,6 +34,12 @@ class Controller_Lots extends Controller
       $yieldFactor = new YieldFactor;
       $cupProfile = new CupProfile;
       $inputLot = new InputLot;
+      $productionLots = new ProductionLot;
+
+      $productionLots->start_time = '00:00:00 AM';
+      $productionLots->end_time = '00:00:00 PM';
+      $save = $productionLots->save();
+      $productionLotsId=$productionLots->id;
 
       $yieldFactor->pasilla_percentage= $pasillaPercentage;
       $yieldFactor->white_percentage= $whitePercentage;
@@ -61,11 +69,13 @@ class Controller_Lots extends Controller
       $inputLot->input_date = $inputDate;
       $inputLot->kilos_number = $kilosNumber;
       $inputLot->available_kilos = $avaibleKilos;
+      $inputLot->state = 'P';
       $inputLot->cup_profiles_id = $cupProfilesId;
       $inputLot->yield_factors_id = $yieldFactorId;
+      $inputLot->production_lots_id = $productionLotsId;
       $save3 = $inputLot->save();
 
-      if($save1 == 1 && $save2 == 1 && $save3 == 1)
+      if($save ==1 && $save1 == 1 && $save2 == 1 && $save3 == 1)
       {
         echo "<script type=\"text/javascript\">
                 alert('Se ha guardado la información correctamente');
@@ -134,9 +144,17 @@ class Controller_Lots extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+      $detailsLost= DB::table('yield_factors')
+                          ->join('input_lots', 'yield_factors.id', '=', 'input_lots.yield_factors_id')
+                          ->join('estates', 'input_lots.estates_id', '=', 'estates.id')
+                          ->join('people', 'estates.people_id', '=', 'people.id')
+                          ->whereIn('state',array('A','P'))
+                          ->select('input_lots.id as lots_id','*')
+                          ->get();
+
+      return view("process_lots",compact('detailsLost'));
     }
 
     /**
@@ -147,7 +165,7 @@ class Controller_Lots extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -157,9 +175,20 @@ class Controller_Lots extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+
+      if($request->isMethod("post"))
+      {
+        $idLot= $request->input('production');
+        //$productionLots = ProductionLot;
+        $inputLot = InputLot::find($idLot);
+
+        echo $inputLot;
+
+      }
+
     }
 
     /**

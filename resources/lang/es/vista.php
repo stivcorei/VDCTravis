@@ -27,12 +27,14 @@ return [
     'message_logout'       => 'Seleccione "Cerrar sesión" para finalizar su sesión actual.',
     'first_item_dashboard' => 'Registrar datos',
     'second_item_dashboard'=> 'Ingresar lote',
+    'three_item_dashboard' => 'Procesos de lotes',
 
     'name_tab_register'    => 'Registro de usuario',
     'name_tab_add_estate'  => 'Gestionar finca',
     'name_tab_update_data' => 'Actualizar datos',
 
     'name_tab_register_lots'=> 'Registrar lote',
+    'name_tab_process_lots' => 'Proceso de lotes',
     'type_user'            => 'Tipo de usuario',
     'type_identicication'  => 'Documento',
     'identification_card'  => 'Cédula o NIT',
@@ -53,12 +55,14 @@ return [
     'button_close'         => 'Cerrar',
     'button_delete'        => 'Eliminar',
     'button_search'        => 'Buscar',
+    'button_update'        => 'Actualizar persona',
     'add_estate'           => 'Agregar finca',
     'edit'                 => 'Editar',
     'remove'               => 'Eliminar',
     'title_remove_estate'  => 'Eliminar finca',
     'confirmation_delete'  => '¿Esta seguro de eliminar la finca seleccionada?',
     'title_factor_calculate'=> 'Factor de rendimiento en base a 250gr',
+
     'grain_pasilla'        => 'Grano pasilla %',
     'grain_white'          => 'Grano blanco %',
     'grain_fermented'       => 'Grano fermentado %',
@@ -81,6 +85,18 @@ return [
     'label_balance_decription' => 'Descripción de equilibrio',
     'label_add_lot'        => 'Agregar lote',
     'label_view_lot'       => 'Ver lotes',
+    'label_details_lots'   => 'Detalle de lote',
+    'label_enter_production_lost' => 'Entrar a producción',
+    'label_hour_start'     => 'Hora inicio',
+    'label_machine_trilla' => 'Trilla',
+    'label_machine_desimetric' => 'Desimétrica',
+    'label_machine_electronic' => 'Electrónica',
+    'label_machine_tostion' => 'Tostión',
+    'label_machine_select' => 'Selección',
+    'label_hour_end' => 'Hora fin',
+
+    'th-waiting_lots'      => 'Lotes en espera',
+    'th-inprocess_lots'    => 'Lotes en proceso',
 
 
 

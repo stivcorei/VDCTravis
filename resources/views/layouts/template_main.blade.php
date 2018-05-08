@@ -20,6 +20,12 @@
               <span class="nav-link-text">@lang("vista.second_item_dashboard")</span>
             </a>
           </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="@lang('vista.three_item_dashboard')">
+             <a class="nav-link text-dark" href="process_lots">
+               <i class="fa fa-coffee"></i>
+               <span class="nav-link-text">@lang("vista.three_item_dashboard")</span>
+             </a>
+           </li>
       </ul>
 
       <ul class="navbar-nav sidenav-toggler bg-info text-white">

@@ -128,7 +128,7 @@ class Controller_Data extends Controller
 
       $userType = DB::table('user_types')->get();
 
-
+      $dataPeople = DB::table('people')->get();
 
 
 
@@ -148,30 +148,38 @@ class Controller_Data extends Controller
         $altitudeEstate = $request->input('altitude-estate');
         $cityEstate = $request->input('city-estate');
         $veredaEstate = $request->input('vereda-estate');
+        $idDeletePeople = $request->input('id-people-remove');
 
-        if($typeUser == 1 && $request->input('save') != "save")
+
+        if($request->input('delete') == 'delete')
+        {
+          $this->destroy($idDeletePeople);
+        }
+        else if($typeUser == 1 && $request->input('save') != "save" && $request->input('update') != "update")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','userType','estate','coffeeGrower','municipalities'));
+                                                  'address','email','identificationType','employeeRole','userType','dataPeople','estate','coffeeGrower','municipalities'));
         }
-        else if($typeUser == 2 && $request->input('save') != "save")
+        else if($typeUser == 2 && $request->input('save') != "save" && $request->input('update') != "update")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','userType','estate','coffeeGrower','municipalities'));
+                                                  'address','email','identificationType','employeeRole','userType','dataPeople','estate','coffeeGrower','municipalities'));
         }
-        else if($typeUser== 3 && $request->input('save') != "save")
+        else if($typeUser== 3 && $request->input('save') != "save" && $request->input('update') != "update")
         {
           return view("registro_datos",compact('typeUser','type_identification','identification','name','last_name','telephone',
-                                                  'address','email','identificationType','employeeRole','userType','estate','coffeeGrower','municipalities'));
+                                                  'address','email','identificationType','employeeRole','userType','dataPeople','estate','coffeeGrower','municipalities'));
         }
-        else if($request->input('save') == "save" && $typeUser != 2)
+        else if($request->input('save') == "save")
         {
+
           $this->create($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
-                        $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate);
+                          $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate);
         }
-        else if($request->input('save') == "save" && $typeUser == 2)
+        else if($request->input('update') == "update")
         {
-          $this->create($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
+
+          $this->update($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
                           $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate);
         }
 
@@ -207,8 +215,85 @@ class Controller_Data extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($employeeRole2,$typeUser,$type_identification,$identification,$name,$last_name,$telephone,$address,$email,
+                    $nameEstate,$addressEstate,$altitudeEstate,$cityEstate,$veredaEstate)
     {
+
+              $person = Person::find($identification);
+              $userType = new UserType;
+
+              //$validation = $person->find($identification);
+
+              if(count($person) == 0)
+              {
+                echo "<script type=\"text/javascript\">
+                       alert('El usuario con número de identificación $identification no existe');
+                       history.go(-1);
+                      </script>";
+                    exit;
+              }
+
+              $person->id = $identification;
+              $person->names = $name;
+              $person->surnames = $last_name;
+              $person->phone = $telephone;
+              $person->address = $address;
+              $person->email = $email;
+              $person->employee_roles_id = $employeeRole2;
+              $person->identification_types_id = $type_identification;
+
+              if($person->save()==1)
+              {
+
+                  $personTypeUser =  $person->user_types()->find($typeUser);
+
+
+
+                   if($personTypeUser == '')
+                   {
+                     $person->user_types()->attach($typeUser);
+                   }
+
+                  if($typeUser == 2)
+                  {
+
+                    $estate = new Estate;
+                    $estate->people_id = $identification;
+                    $estate->name = $nameEstate;
+                    $estate->address = $addressEstate;
+                    $estate->altitude = $altitudeEstate;
+                    $estate->municipalities_id = $cityEstate;
+                    $estate->vereda = $veredaEstate;
+                    $estate->save();
+
+
+                  }
+                  echo "<script type=\"text/javascript\">
+        								alert('Se ha guardado la información correctamente');
+        								location.href = 'registro_datos';
+        						   </script>";
+
+              }
+              else if($person->save()==0)
+              {
+                echo "<script type=\"text/javascript\">
+                       alert('El usuario con número de identificación $identification no existe');
+                       history.go(-1);
+                      </script>";
+               exit;
+
+              }
+              else
+              {
+                echo "<script type=\"text/javascript\">
+       							   alert('Ha ocurido un error al actualizar la información');
+       							   history.go(-1);
+       						    </script>";
+       				 exit;
+
+              }
+
+
 
     }
 
@@ -220,6 +305,31 @@ class Controller_Data extends Controller
      */
     public function destroy($id)
     {
-        //
+      $people_id = $id;
+      $estates = Estate::where('people_id',$id)->delete();//::find($estates_id);
+
+      $person = Person::find($id)->tags()->detach();
+      $person->user_types()->detach($id);
+
+
+
+      if($person->delete()==1)
+      {
+        echo "<script type=\"text/javascript\">
+                alert('Se ha eliminado la información correctamente');
+                location.href = 'registro_datos';
+               </script>";
+
+      }
+      else
+      {
+        echo "<script type=\"text/javascript\">
+               alert('Ha ocurido un error al actualizar la información');
+               history.go(-1);
+              </script>";
+       exit;
+
+      }
+
     }
 }

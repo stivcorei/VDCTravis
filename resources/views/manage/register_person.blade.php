@@ -136,5 +136,6 @@
     @endif
   <br>
     <button class="btn btn-primary" name="save" value="save" type="submit">@lang("vista.button_save")</button>
+    <button id="btn-update" class="btn btn-info" name="update" value="update" type="submit">@lang("vista.button_update")</button>
   </form>
 </div>

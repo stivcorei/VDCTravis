@@ -69,4 +69,9 @@ class Controller_views extends Controller
 
       return view("register_lots",compact('identificationType','employeeRole','estate','coffeeGrower'));
     }
+
+    public function process_lots()
+    {
+      
+    }
 }

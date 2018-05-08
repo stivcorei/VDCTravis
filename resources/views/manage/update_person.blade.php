@@ -8,8 +8,9 @@
       <th>@lang("vista.telephone")</th>
       <th>@lang("vista.address")</th>
       <th>@lang("vista.email")</th>
+      <th>@lang("vista.type_user")</th>
       <th>@lang("vista.edit")</th>
-      <th>@lang("vista.remove")</th>
+      <!--<th>@lang("vista.remove")</th>-->
     </tr>
   </thead>
   <tbody>
@@ -21,8 +22,9 @@
           <td id="phone{{$dataPeople->id}}">{{$dataPeople->phone}}</td>
           <td id="address{{$dataPeople->id}}">{{$dataPeople->address}}</td>
           <td id="email{{$dataPeople->id}}">{{$dataPeople->email}}</td>
+          <td id="email{{$dataPeople->id}}">{{$dataPeople->email}}</td>
           <td><button id="{{$dataPeople->id}}" class="btn btn-primary" onclick="editPeople(this.id)"><i class="fa fa-edit"></i></button></td>
-          <td><button id="{{$dataPeople->id}}" class="btn btn-info" onclick="deletePeople(this.id)"><i class="fa fa-eye"></i></button></td>
+          <!--<td><button id="{{$dataPeople->id}}" class="btn btn-danger" onclick="removePeople(this.id)"><i class="fa fa-trash"></i></button></td>-->
         </tr>
        @endforeach
   </tbody>
@@ -45,13 +47,13 @@
                   {{ csrf_field() }}
                   <div class="form-group row">
                <label for="example-text-input" class="col-3 col-form-label">Id:</label>
-               <div class="col-2">
-                <input class="form-control" type="text" name="id-estate-remove" value="" id="id-estate-remove" readonly="true">
+               <div class="col-4">
+                <input class="form-control" type="text" name="id-people-remove" value="" id="id-people-remove" readonly="true">
                </div>
                </div>
                <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                 <button class="btn btn-primary" name="btn-manage" value="delete" type="submit">Eliminar</button>
+                 <button class="btn btn-primary" name="delete" value="delete" type="submit">Eliminar</button>
                </div>
           </form>
 

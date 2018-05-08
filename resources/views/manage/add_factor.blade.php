@@ -25,7 +25,7 @@
         <div class="col-md-3 mb-2">
         <label for="validationCustomUsername">@lang("vista.factor_in_kilos")</label>
         <div class="input-group">
-        <input type="text"  class="factor form-control" name="yield-factor" data-toggle="tooltip" title="Cantida de kilos requeridos" value=" " id="yield-factor" required>
+        <input type="text"  class="factor form-control" name="yield-factor" data-toggle="tooltip" title="Cantida de kilos requeridos" value="50" id="yield-factor" required>
         </div>
       </div>
         </div>

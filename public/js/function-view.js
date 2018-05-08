@@ -6,24 +6,45 @@ $(document).ready(function() {
     $('input[for="id-estate-remove"]').hide();
     $('input[for="id-estate"]').hide();
     $('input[for="identification-add-estate"]').hide();
+    //$("#btn-update").hide();
+
     date();
 
     $('#create-lots').validate({ // initialize the plugin
 
-      lang: 'en',
+      lang: 'es',
         rules: {
             "input-date": {
                 required: true,
-
             },
             "kilos-number": {
                 required: true,
-                minlength: 5
             },
             "avaible-kilos":{
-               required: true
+               required: true,
+            },
+            "pasilla-percentage": {
+                required: true,
+            },
+            "white-percentage": {
+                required: true,
+            },
+            "fermented-percentage":{
+               required: true,
+            },
+            "borer": {
+                required: true,
+            },
+            "yield-factor": {
+                required: true,
             }
-        }
+        },
+        messages:
+        {
+          "input-date": {
+              required: 'Selecione una fecha',
+         }
+        },
     });
 } );
 
@@ -61,7 +82,10 @@ function editPeople(id)
      var email = document.getElementById('email'+id).innerHTML;
      // // var codigo_region = document.getElementById('codigo_region'+id).innerHTML;
 
-     $("#modal-edit-people").modal();
+    // $("#modal-edit-people").modal();
+    $("#register-tab").click();
+    $("#btn-update").show();
+
 
      document.getElementById('identification-card').value=id;
      document.getElementById('names').value=names;
@@ -77,7 +101,7 @@ function removePeople(id)
 {
 
   $("#modal-remove-people").modal();
-  document.getElementById('id-estate-remove').value=id;
+  document.getElementById('id-people-remove').value=id;
 
 }
 

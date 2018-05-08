@@ -26,6 +26,7 @@ class CreateProductionLotsTable extends Migration
             $table->increments('id');
             $table->time('start_time');
             $table->time('end_time');
+            $table->timestamps();
         });
     }
 
