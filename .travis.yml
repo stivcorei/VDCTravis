@@ -5,7 +5,7 @@ php:
 
 before_script:
   - cp .env.travis .env
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -c 'create database homestead_test;' -U postgres
   - composer self-update
   - composer install --no-interaction
 
