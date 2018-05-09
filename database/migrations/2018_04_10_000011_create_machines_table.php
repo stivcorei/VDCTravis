@@ -25,6 +25,9 @@ class CreateMachinesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
+            $table->char('state',1);
+            $table->timestamps();
+
         });
     }
 

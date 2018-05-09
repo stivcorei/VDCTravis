@@ -8,7 +8,10 @@ use App\YieldFactor;
 use App\CupProfile;
 use App\InputLot;
 use App\ProductionLot;
+use App\Machine;
 use Illuminate\Support\Facades\DB;
+
+use DateTime;
 
 class Controller_Lots extends Controller
 {
@@ -146,13 +149,7 @@ class Controller_Lots extends Controller
      */
     public function show()
     {
-      $detailsLost= DB::table('yield_factors')
-                          ->join('input_lots', 'yield_factors.id', '=', 'input_lots.yield_factors_id')
-                          ->join('estates', 'input_lots.estates_id', '=', 'estates.id')
-                          ->join('people', 'estates.people_id', '=', 'people.id')
-                          ->whereIn('state',array('A','P'))
-                          ->select('input_lots.id as lots_id','*')
-                          ->get();
+      $detailsLost= $this->detailsLost();
 
       return view("process_lots",compact('detailsLost'));
     }
@@ -184,8 +181,25 @@ class Controller_Lots extends Controller
         $idLot= $request->input('production');
         //$productionLots = ProductionLot;
         $inputLot = InputLot::find($idLot);
+        $inputLot->state = 'A';
+        $productionLot = ProductionLot::find($inputLot->production_lots_id);
+        $yieldFactor = YieldFactor::find($inputLot->yield_factors_id);
 
-        echo $inputLot;
+        $starTime = $this->getDateHours();
+        $endTime = $this->machinesProduction($yieldFactor);
+
+        $productionLot->start_time = $starTime;
+        $productionLot->end_time = $endTime;
+        $productionLot->save();
+        $inputLot->save();
+
+        $detailsLost= $this->detailsLost();
+        $machine = Machine::get();
+    
+        return view("process_lots",compact('detailsLost','machine'));
+
+
+
 
       }
 
@@ -200,5 +214,90 @@ class Controller_Lots extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function machinesProduction($yieldFactor)
+    {
+      $pasillaPercentage = $yieldFactor->pasilla_percentage;
+      $whitePercentage = $yieldFactor->white_percentage;
+      $fermentedPercentage = $yieldFactor->fermented_percentage;
+      $borer = $yieldFactor->berry_borer_percentage;
+      $minutes =0;
+
+
+
+      if($pasillaPercentage>0)
+      {
+        $machine = Machine::find(1);
+        $machine->state = 'A';
+        $machine->save();
+        $minutes +=60;
+
+      }
+      if($whitePercentage>0 && $fermentedPercentage>0 && $borer>0)
+      {
+        $machine = Machine::find(2);
+        $machine->state = 'A';
+        $machine->save();
+        $minutes +=60;
+      }
+      if($whitePercentage>3 && $fermentedPercentage>3 && $borer>3)
+      {
+        $machine = Machine::find(3);
+        $machine->state = 'A';
+        $machine->save();
+        $minutes +=60;
+      }
+
+      $machine = Machine::find(4);
+      $machine->state = 'A';
+      $machine->save();
+      $minutes +=60;
+
+      $machine = Machine::find(5);
+      $machine->state = 'A';
+      $machine->save();
+      $minutes +=60;
+
+      return $this->addMinutes($minutes);
+
+    }
+
+   /**
+   **Obtiene el valor de hora minutos y segundos.
+   **/
+    public function getDateHours()
+    {
+      $hoy = getdate();
+      $hour = $hoy['hours'];
+      $minutes = $hoy['minutes'];
+      $seconds = $hoy['seconds'];
+
+      return $hour.":".$minutes.":".$seconds;
+    }
+
+    public function addMinutes($minutes)
+    {
+      $date = new DateTime();
+      $date->modify('0 hours');
+      $date->modify('+'.$minutes.' minute');
+      $date->modify('0 second');
+      return $date->format('H:i:s');
+    }
+
+    public function detailsLost()
+    {
+
+      $detailsLost= DB::table('yield_factors')
+                          ->join('input_lots', 'yield_factors.id', '=', 'input_lots.yield_factors_id')
+                          ->join('estates', 'input_lots.estates_id', '=', 'estates.id')
+                          ->join('people', 'estates.people_id', '=', 'people.id')
+                          ->join('production_lots', 'input_lots.production_lots_id', '=', 'production_lots.id')
+                          ->whereIn('state',array('A','P'))
+                          ->select('input_lots.id as lots_id','*')
+                          ->get();
+
+
+      return $detailsLost;
     }
 }

@@ -47,12 +47,21 @@
                     </tr>
                   </thead>
                   <tbody>
-                     @foreach($detailsLost as $detailsLost2)
-                       @if($detailsLost2->state == 'A')
-                        <td>{{$detailsLost2->lots_id}}</td>
-                        
-                       @endif
-                      @endforeach
+
+                    @foreach($detailsLost as $detailsLost1)
+                    <tr>
+                      @if($detailsLost1->state == 'A')
+                        <td>{{$detailsLost1->start_time}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{$detailsLost1->end_time}}</td>
+                        @endif
+                    </tr>
+                    @endforeach
+
                 </tbody>
                 </table>
                 </td>
