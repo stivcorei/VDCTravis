@@ -21,7 +21,7 @@ class RoutesTest extends TestCase
 
       $this->post("/update_estate")->assertStatus(200);
 
-      $this->post("/create_data")->assertStatus(200);
+      $this->post("/create_data")->assertStatus(500);
       $this->post("/remove_estate")->assertStatus(200);
       $this->post("/add_estate")->assertStatus(200);
       $this->post("/create_estate")->assertStatus(200);
